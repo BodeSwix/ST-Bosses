@@ -1,0 +1,183 @@
+auto_spawn:
+  max_active: 3
+
+bosses:
+  maitre_breeze:
+    name: "&aMa&2î&atre Breeze"
+    entity: BREEZE
+    scale: 6.0
+    bar: { color: GREEN }
+    stats: { health: 350.0, damage: 9.0, armor: 6.0, speed: 0.40 }
+    spawn:
+      enabled: true
+      chance: 0.22
+      biomes: [ "windswept", "mountain", "plateau", "desert" ]
+    abilities:
+      wind_burst: { interval_ms: 9000, radius: 9 }
+      shulker_barrage: { interval_ms: 14000 }
+    loot:
+      wind_shards:
+        chance: 1.0
+        material: PRISMARINE_CRYSTALS
+        amount: { min: 8, max: 18 }
+
+  titan_warden:
+    name: "&3Titan Warden"
+    entity: WARDEN
+    scale: 4.0
+    bar: { color: BLUE }
+    stats: { health: 600.0, damage: 14.0, armor: 10.0, speed: 0.30 }
+    spawn:
+      enabled: true
+      chance: 0.12
+      biomes: [ "deep", "dark", "cave" ]
+    abilities:
+      darkness_curse: { interval_ms: 10000, radius: 12, seconds: 7 }
+      sonic_pulse:     { interval_ms: 16000, radius: 8, damage: 12.0 }
+    loot:
+      warden_drop:
+        chance: 0.5
+        material: ECHO_SHARD
+        amount: { min: 2, max: 6 }
+
+  evocateur_fou:
+    name: "&5L''Évocateur fou"
+    entity: EVOKER
+    scale: 1.8
+    bar: { color: PURPLE }
+    stats: { health: 320.0, damage: 8.0, armor: 5.0, speed: 0.32 }
+    spawn:
+      enabled: true
+      chance: 0.20
+      biomes: [ "forest", "taiga" ]
+    abilities:
+      vex_call:   { interval_ms: 12000, count: 4, lifetime_ticks: 400 }
+      root_snare: { interval_ms: 14000, radius: 7 }
+    loot:
+      totemish:
+        chance: 0.25
+        material: TOTEM_OF_UNDYING
+        amount: { min: 1, max: 1 }
+
+  ravageur_alpha:
+    name: "&6Ravageur Alpha"
+    entity: RAVAGER
+    scale: 2.5
+    bar: { color: YELLOW }
+    stats: { health: 500.0, damage: 12.0, armor: 9.0, speed: 0.35 }
+    spawn:
+      enabled: true
+      chance: 0.18
+      biomes: [ "plains", "savanna", "forest" ]
+    abilities:
+      stomp_quake: { interval_ms: 9000, radius: 6, damage: 7.0 }
+      rage_charge: { interval_ms: 12000 }
+    loot:
+      horns:
+        chance: 0.35
+        material: GOAT_HORN
+        amount: { min: 1, max: 1 }
+
+  ensorceleuse:
+    name: "&dL''Ensorceleuse"
+    entity: WITCH
+    scale: 1.8
+    bar: { color: PINK }
+    stats: { health: 280.0, damage: 7.0, armor: 4.0, speed: 0.30 }
+    spawn:
+      enabled: true
+      chance: 0.22
+      biomes: [ "swamp", "mangrove", "river", "forest" ]
+    abilities:
+      potion_cloud: { interval_ms: 10000, radius: 5, potion: "POISON", amplifier: 0, seconds: 8 }
+      potion_cloud_weak: { interval_ms: 16000, radius: 5, potion: "WEAKNESS", amplifier: 0, seconds: 8 }
+    loot:
+      witch_drop:
+        chance: 1.0
+        material: REDSTONE
+        amount: { min: 6, max: 16 }
+
+  # --- Exemples bonus issus du brouillon précédent ---
+  desert_wyrm:
+    name: "&6Seigneur des Sables"
+    entity: HUSK
+    scale: 1.2
+    bar: { color: YELLOW }
+    stats: { health: 320.0, damage: 9.0, armor: 6.0, speed: 0.34 }
+    spawn:
+      enabled: true
+      chance: 0.22
+      biomes: [ "desert" ]
+    abilities:
+      sandstorm: { interval_ms: 11000, radius: 8 }
+      shulker_barrage: { interval_ms: 16000 }
+    loot:
+      emeralds:
+        chance: 1.0
+        material: EMERALD
+        amount: { min: 6, max: 16 }
+      book_sand:
+        chance: 0.35
+        material: ENCHANTED_BOOK
+        name: "&eTome des Dunes"
+        enchants: { MENDING: 1 }
+
+  frost_revenant:
+    name: "&bRevenant Gelé"
+    entity: STRAY
+    scale: 1.2
+    bar: { color: BLUE }
+    stats: { health: 280.0, damage: 8.0, armor: 5.0, speed: 0.32 }
+    spawn:
+      enabled: true
+      chance: 0.20
+      biomes: [ "snow", "frozen", "ice" ]
+    abilities:
+      freeze_aura: { interval_ms: 9000, radius: 9 }
+      shulker_barrage: { interval_ms: 18000 }
+    loot:
+      shards:
+        chance: 1.0
+        material: PRISMARINE_CRYSTALS
+        amount: { min: 8, max: 20 }
+      frost_sword:
+        chance: 0.20
+        material: DIAMOND_SWORD
+        name: "&bLame du Givre"
+        enchants: { DAMAGE_ALL: 4, FROST_WALKER: 2 }
+
+  nether_brute:
+    name: "&cBrute du Néant"
+    entity: PIGLIN_BRUTE
+    scale: 1.4
+    bar: { color: RED }
+    stats: { health: 360.0, damage: 11.0, armor: 8.0, speed: 0.36 }
+    spawn:
+      enabled: true
+      chance: 0.18
+      biomes: [ "nether", "wastes", "crimson", "warped", "deltas" ]
+    abilities:
+      rage_charge: { interval_ms: 8000 }
+    loot:
+      netherite_scrap:
+        chance: 0.5
+        material: NETHERITE_SCRAP
+        amount: { min: 1, max: 3 }
+
+  forest_ent:
+    name: "&2Ancien Ent"
+    entity: IRON_GOLEM
+    scale: 1.8
+    bar: { color: GREEN }
+    stats: { health: 420.0, damage: 10.0, armor: 10.0, speed: 0.28 }
+    spawn:
+      enabled: true
+      chance: 0.16
+      biomes: [ "forest", "taiga" ]
+    abilities:
+      root_snare: { interval_ms: 12000, radius: 7 }
+    loot:
+      nature_gift:
+        chance: 0.6
+        material: GOLDEN_APPLE
+        amount: { min: 1, max: 2 }

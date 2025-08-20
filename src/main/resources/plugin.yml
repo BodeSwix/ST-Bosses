@@ -1,0 +1,14 @@
+name: NHBosses
+main: com.nowheberg.bosses.BossesPlugin
+version: 1.0.0
+api-version: '1.21'
+author: Now-Heberg
+description: Boss plugin avec scale, capacités et loots
+commands:
+  boss:
+    description: Admin des boss
+    usage: /boss <list|spawn|killall>
+    permission: nhbosses.admin
+permissions:
+  nhbosses.admin:
+    default: op
