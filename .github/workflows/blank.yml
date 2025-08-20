@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,12 +21,35 @@ jobs:
           java-version: "21"
           cache: maven
 
-      # (optionnel) Purger un cache maven cassé de Paper si besoin
-      # - name: Purge old Paper cache
-      #   run: rm -rf ~/.m2/repository/io/papermc/paper
+      - name: Maven settings (timeouts + mirrors)
+        run: |
+          mkdir -p .m2
+          cat > .m2/settings.xml << 'XML'
+          <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+            <profiles>
+              <profile>
+                <id>timeouts</id>
+                <properties>
+                  <maven.wagon.http.connectionTimeout>60000</maven.wagon.http.connectionTimeout>
+                  <maven.wagon.http.readTimeout>600000</maven.wagon.http.readTimeout>
+                  <maven.wagon.http.retryHandler.count>8</maven.wagon.http.retryHandler.count>
+                </properties>
+              </profile>
+            </profiles>
+            <activeProfiles>
+              <activeProfile>timeouts</activeProfile>
+            </activeProfiles>
+          </settings>
+          XML
+
+      # Pré-télécharge toutes les dépendances (évite les blocages en plein build)
+      - name: Go offline (pre-fetch deps)
+        run: mvn -B -U -DskipTests -s .m2/settings.xml dependency:go-offline
 
       - name: Build with Maven
-        run: mvn -B -DskipTests -U package
+        run: mvn -B -U -DskipTests -s .m2/settings.xml package
 
       - name: Upload plugin jar
         uses: actions/upload-artifact@v4
